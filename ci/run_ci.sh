@@ -24,8 +24,9 @@ Workload                | Test                           | Result | Runtime  |
 EOF
 
 test_list=`cat ci/CI_test_list.yml`           #yml file contains the list of test scripts to run from different workloads
-
 echo -e  "$test_list\n\n"                         
+
+test_rc=0
 
 for i in ${test_list}; do            
 
@@ -50,6 +51,7 @@ for i in ${test_list}; do
       result="PASS"
   else
       result="FAIL"
+      test_rc=1
   fi
 
   end_time=`date`
@@ -61,4 +63,6 @@ for i in ${test_list}; do
 done  
 
 cat results.markdown
+
+exit $test_rc
 
