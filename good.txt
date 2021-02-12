@@ -1,0 +1,1 @@
+run /network-perf:run_script_fromgit.sh
